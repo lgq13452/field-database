@@ -1,0 +1,80 @@
+<!--pages/vant/vant.wxml-->
+<view class="rilid" bindtap="popupShow">
+	<van-icon class="date" name="circle" sticky />
+	<view class="haorizi">{{calendar.time.day}}</view>
+</view>
+
+<!-- 日历卡片 -->
+<van-popup class="popupAa" show="{{ popupShow }}" position="top" closeable close-icon-position="top-left" bind:close="popupHide" custom-style="height: 100vh">
+	<view class="popupBg" style="background-image: url({{calendar.image_blurred}})"> </view>
+	<view class="day-card">
+		<view class="card-top">
+			<image class="day-cardImg" src="{{calendar.image}}" mode="widthFix">
+			</image>
+			<view class="time">
+				<text class="dtime">{{calendar.time.day}}</text>
+				<view class="btime">
+					<view class="mtime">{{calendar.time.month}}.</view>
+					<view class="wtime">{{calendar.time.week}}</view>
+				</view>
+			</view>
+		</view>
+		<view class="title">{{calendar.title}}</view>
+		<view class="content">{{calendar.content}}</view>
+	</view>
+
+</van-popup>
+
+<van-icon class="search" name="search" sticky bindtap="navigateToSearch" />
+
+<van-tabs color="white" active="{{ active }}" bind:change="onChange" animated="{{true}}" sticky>
+	<van-tab title="发现">
+		<swiper indicator-dots autoplay interval="{{5000}}" duration="{{500}}" indicator-dots indicator-color="#808080" indicator-active-color="#ffffff" circular>
+			<swiper-item wx:for="{{indexData.banner.list}}">
+				<image class="lunbo" mode="widthFix" src="{{item.image}}" data-post="{{item}}" bindtap="navitorToPlay" />
+			</swiper-item>
+		</swiper>
+		<!-- 今日 -->
+		<view class="find-title">{{indexData.today.selection_title}}</view>
+		<post-card wx:for="{{indexData.today.list}}" post="{{item}}"></post-card>
+		<!-- 热门 -->
+		<view class="find-title">{{indexData.hot.selection_title}}</view>
+		<view class="dfl">
+			<post-card wx:for="{{indexData.hot.list}}" post="{{item}}" isSpecial="{{true}}"></post-card>
+		</view>
+		<!-- 专题 -->
+		<view class="find-title">{{indexData.album.selection_title}}</view>
+		<swiper indicator-dots autoplay interval="{{5000}}" duration="{{500}}" indicator-dots indicator-color="#808080" indicator-active-color="#ffffff" circular>
+			<swiper-item wx:for="{{indexData.album.list}}">
+				<image class="lunbo" mode="widthFix" src="{{item.image}}" data-post="{{item}}" bindtap="navitorToPlay" />
+				<view class="desc">
+					<view class="cates active">{{indexData.album.selection_title}}</view>
+					<view class="title">{{item.title}}</view>
+					<view class="app_fu_title">{{item.app_fu_title}}</view>
+				</view>
+			</swiper-item>
+		</swiper>
+		<!-- 历史 -->
+		<view wx:for="{{historyData}}" wx:for-item="day">
+			<view class="find-title">{{day.selection_title}}</view>
+			<post-card wx:for="{{day.list}}" wx:for-item="dayList" post="{{dayList}}"></post-card>
+		</view>
+
+		<van-loading class="showLoad" size="24px" wx:if="{{showLoad}}">加载中</van-loading>
+	</van-tab>
+	<van-tab title="频道">
+		<van-grid square column-num="2" border="{{ false }}">
+			<van-grid-item use-slot wx:for="{{ cateList }}" data-careid="{{item.cateid}}" data-tab="{{item.tab}}" bindtap="routePostList">
+				<image style="width: 100%" src="{{item.icon}}" />
+				<text class="catename">#{{item.catename}}#</text>
+			</van-grid-item>
+		</van-grid>
+	</van-tab>
+</van-tabs>
+
+
+<van-overlay show="{{ show }}" bind:click="onClickHide">
+	<view class="wrapper">
+		<van-loading size="24px" vertical color="#1989fa">加载中...</van-loading>
+	</view>
+</van-overlay>

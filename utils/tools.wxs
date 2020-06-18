@@ -1,0 +1,50 @@
+var parseCates = function (cates) {
+  if (cates) {
+    return cates.map(function (item) {
+      return item.catename
+    }).join(',')
+  } else {
+    return ''
+  }
+
+}
+var parseTime = function (t) {
+  return parseInt(t / 60) + "'" + parseInt(t % 60) + '"';
+}
+var parseTimeDay = function (times) {
+  var ms = times * 1000;
+  var timee;
+  var yearAgo;
+  var yaerCurrent;
+  var m;
+  var d;
+  var h;
+  var daysAgo = Math.floor(parseInt(Date.now() - ms) / 1000 / 60 / 60 / 24);
+  if (daysAgo == 0) {
+    h = Math.floor(parseInt(Date.now() - ms) / 1000 / 60 / 60);
+    if (h != 0) {
+      return h + "小时前";
+    } else {
+      return Math.floor(parseInt(Date.now() - ms) / 1000 / 60 % 60) + "分钟前"
+    }
+  } else if (daysAgo > 7) {
+    yaerCurrent = getDate().getFullYear();
+    timee = getDate(ms);
+    yearAgo = timee.getFullYear();
+    yaerCurrent = yearAgo == yaerCurrent ? '' : yearAgo + '年';
+    m = timee.getMonth() + 1;
+    m = m < 10 ? "0" + m : m;
+
+    d = timee.getDate() + 1;
+    d = d < 10 ? "0" + d : d;
+    return yaerCurrent + m + "月" + d + "日";
+  } else {
+    return daysAgo + '天前';
+  }
+
+}
+module.exports = {
+  parseCates: parseCates,
+  parseTime: parseTime,
+  parseTimeDay: parseTimeDay
+};

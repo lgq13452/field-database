@@ -1,0 +1,20 @@
+<!--pages/search/search.wxml-->
+<van-search value="{{ value }}" background="#1a1a1a" placeholder="请输入搜索关键词" show-action bind:search="getSearch" bind:clear="hidePosts" bind:cancel="onCancel" />
+<block wx:if="{{isShowPosts}}">
+	<post-card wx:for="{{searchData.result.list}}" post="{{item}}"></post-card>
+</block>
+<block wx:else>
+	<view class="hotSearch">热门搜索</view>
+	<view class="List">
+		<view class="searchList" wx:for="{{recommend_keywords}}" bindtap="getKeyword" data-kw="{{item.kw}}">{{item.kw}}</view>
+	</view>
+	<view class="historySearch">搜索历史</view>
+	<view class="List">
+		<view class="searchList" wx:for="{{searchHistroy}}" bindtap="getKeyword" data-kw="{{item}}">{{item}}</view>
+	</view>
+</block>
+<!-- 更多 -->
+<view wx:for="{{moreData}}" wx:for-item="page">
+	<post-card wx:for="{{page.result.list}}" wx:for-item="pageList" post="{{pageList}}"></post-card>
+</view>
+<van-loading size="24px" wx:if="{{showLoading}}">加载中</van-loading>

@@ -1,0 +1,164 @@
+/* pages/play/play.wxss */
+.myvideo {
+  width: 100%;
+  height: 220px;
+  position: sticky;
+  top: 0;
+  z-index: 999
+}
+
+.info {
+  margin-top: 40px;
+  padding: 0 10px;
+  /* color: gray; */
+  font-size: 15px;
+  border-bottom: 1px solid lightgray;
+}
+
+.intro {
+  margin-bottom: 20px;
+}
+
+.title {
+  text-align: center;
+  font-weight: bold;
+  color: black;
+  padding: 0 10px
+}
+
+.cate {
+  text-align: center;
+  margin-top: 10px;
+  color: gray;
+}
+
+.intro {
+  margin-top: 20px;
+  line-height: 1.5em;
+}
+
+.item_top {
+  margin: 15px;
+}
+
+.xguan {
+  /* padding-bottom: 20px;
+  border-bottom: 1px solid rgba(216, 211, 211, 0.57); */
+}
+
+.xguan .relate_video {
+  /* margin: 15px; */
+  position: relative;
+}
+
+.xguan .relate_video:last-of-type {
+  border-bottom: 1px solid rgba(216, 211, 211, 0.57);
+  padding-bottom: 20px;
+}
+
+.item_name {
+  font-weight: bold;
+}
+
+.item_more {
+  right: 15px;
+  position: absolute;
+  color: gray;
+}
+
+.scroll-view_H {
+  white-space: nowrap;
+}
+
+.scroll-view_H .card {
+  display: inline-block;
+  width: 40%;
+  margin-right: 15px;
+}
+
+.scroll-view_H .card:first-of-type {
+  margin-left: 15px;
+}
+
+.scroll-view_H .card image {
+  width: 100%;
+  height: 94px;
+  filter: brightness(0.7);
+}
+
+.scroll-view_H .card {
+  position: relative;
+}
+
+.scroll-view_H .card .infos {
+  width: 80%;
+  position: absolute;
+  bottom: 0;
+  color: white;
+  font-size: 10px;
+  margin: 10px;
+}
+
+.scroll-view_H .card .infos .card-title {
+  width: 100%;
+  margin-top: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.total {
+  margin: 15px 15px 0;
+}
+
+.comment {
+  margin: 0 15px;
+  display: flex;
+  font-size: 10px;
+  padding: 15px 0;
+  color: gray;
+  border-bottom: 1px solid rgba(216, 211, 211, 0.57);
+}
+
+.comment .head-portrait {
+  flex: 1;
+}
+
+.comment .head-portrait .default-avatar {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-image: url("https://api.kele8.cn/pic/https://oss-xpc0.xpccdn.com/passport/default.png");
+  background-size: 100%
+}
+
+.comment .head-portrait .default-avatar image {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.comment .infoo {
+  flex: 8;
+}
+
+.comment .infoo .itmcon {
+  font-size: 14px;
+  color: black;
+}
+
+.comment .good-count {
+  flex: 1;
+}
+
+.end {
+  margin-top: 10px;
+  color: lightgray;
+  text-align: center;
+}
+
+.van-loading {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

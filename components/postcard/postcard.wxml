@@ -1,0 +1,15 @@
+<!--components/postcard/postcard.wxml-->
+<wxs src="../../utils/tools.wxs" module="tools" />
+
+<view class="postitem {{isSpecial ? 'special':'' }}" bindtap="navitorToPlay" data-post="{{post}}">
+	<image class="imgs" mode="widthFix" src="{{post.image}}" />
+  <view class="info" wx:if="{{post.is_album == 1}}">
+    <view class="cates active">专题</view>
+    <view class="title">{{post.title}}</view>
+    <view class="app_fu_title">{{post.app_fu_title}}</view>
+  </view>
+  <view class="info" wx:else>
+    <view class="cates">{{tools.parseCates(post.cates)}} / {{tools.parseTime(post.duration)}}</view>
+    <view class="title">{{post.title}}</view>
+  </view>
+</view>

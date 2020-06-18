@@ -1,0 +1,51 @@
+/* pages/search/search.wxss */
+page {
+  background-color: #1a1a1a;
+  color: rgba(142, 137, 137, 0.816);
+}
+
+.van-search__content.van-search__content--square {
+  background-color: #252525;
+  color: white;
+}
+
+.van-field__body.van-field__body--search input {
+  color: white;
+}
+
+.van-cell__left-icon-wrap {
+  font-size: 20px;
+  color: rgba(191, 183, 183, 0.76);
+}
+
+.van-search__action view {
+  color: rgba(191, 183, 183, 0.76);
+}
+
+.hotSearch {
+  margin-top: 20px;
+}
+
+.List {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.searchList {
+  margin: 10px 10px 0;
+  color: white;
+  font-size: 12px;
+  background-color: rgb(41, 33, 33);
+  border-radius: 3px;
+  padding: 7px 6px;
+}
+
+.historySearch {
+  margin-top: 15px;
+}
+
+.van-loading {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

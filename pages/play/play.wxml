@@ -1,0 +1,49 @@
+<!--pages/play/play.wxml-->
+<wxs src="../../utils/tools.wxs" module="tools" />
+<!-- 播放器 -->
+<video class="myvideo" poster="{{postViewDetail.image}}" show-center-play-btn="{{false}}" object-fit="fill" autoplay src="https://api.kele8.cn/pic/{{postViewDetail.content_video[0].progressive[3].https_url}}"></video>
+
+
+<van-loading size="24px" wx:if="{{showPlayLoading}}">加载中</van-loading>
+<view wx:else>
+	<!-- 推文 -->
+	<view class="info">
+		<view class="title">{{postViewDetail.title}}</view>
+		<view class="cate">{{postViewDetail.cate[0]}}/{{tools.parseTime(postViewDetail.duration)}}</view>
+		<view class="intro">{{postViewDetail.intro}}</view>
+	</view>
+	<!-- 推荐视频 -->
+	<view class="xguan">
+		<view class="relate_video" wx:for="{{postViewDetail.relate_video}}">
+			<view class="item_top">
+				<text class="item_name">{{item.name}}</text><text class="item_more" data-careid="{{item.id}}" data-tab="{{item.tab}}" bindtap="routePostList">more</text>
+			</view>
+			<scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll">
+				<view class="card" wx:for="{{item.list}}" wx:for-index="idx" wx:for-item="card" bindtap="navitorToPlay" data-post="{{card}}">
+					<image mode="widthFix" class="card-img" src="{{card.image}}"></image>
+					<view class="infos">
+						<view class="card-time">{{tools.parseTime(card.duration)}}</view>
+						<view class="card-title">{{card.title}}</view>
+					</view>
+				</view>
+			</scroll-view>
+		</view>
+	</view>
+	<!-- 评论 -->
+	<view class="total">{{comment.total}}条评论</view>
+	<view class="comment" wx:for="{{comment.list}}">
+		<view class="head-portrait">
+			<view class="default-avatar">
+				<image width="100%" src="https://api.kele8.cn/pic/{{item.userinfo.avatar}}" />
+			</view>
+		</view>
+		<view class="infoo">
+			<view>{{item.userinfo.username}}</view>
+			<view>{{tools.parseTimeDay(item.addtime)}}</view>
+			<view class="itmcon">{{item.content}}</view>
+		</view>
+		<view class="good-count">
+			<van-icon name="good-job-o" /> {{item.count_approve}}</view>
+	</view>
+	<view class="end">--End--</view>
+</view>

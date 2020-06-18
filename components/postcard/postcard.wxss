@@ -1,0 +1,54 @@
+/* components/postcard/postcard.wxss */
+.postitem {
+  position: relative;
+  width: 100%;
+}
+
+.postitem .imgs {
+  display: block;
+  filter: brightness(0.65);
+  width: 100%;
+}
+
+.info {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 10px 0px 10px 8px;
+  color: white;
+  width: 90%;
+}
+
+.cates {
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.special .info {
+  padding: 5px 0px 5px 8px ;
+}
+.special:first-of-type .title{
+  font-size: 14px;
+}
+.special .title {
+  font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cates.active {
+  border-bottom: 1px solid white;
+  width: 40px;
+  height: 18px;
+}
+
+
+.title {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.app_fu_title {
+  font-size: 10px;
+}

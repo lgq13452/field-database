@@ -1,0 +1,6 @@
+<!--pages/posts/posts.wxml-->
+<!-- <text>pages/posts/posts.wxml</text> -->
+<post-card wx:for="{{posts}}" post="{{item}}"></post-card>
+<van-loading size="24px" wx:if="{{showLoading}}">加载中</van-loading>
+
+<van-notify id="van-notify" />
